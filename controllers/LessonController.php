@@ -40,6 +40,9 @@ class LessonController extends Controller
 
     public function actionUpdate($id) {
         $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -54,6 +57,11 @@ class LessonController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }
+
+    public function actionDelete($id) {
+        $this->findModel($id)->delete();
+        return $this->redirect(['index']);
     }
 
     protected function findModel($id)
