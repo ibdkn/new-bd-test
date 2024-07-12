@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class Lesson extends ActiveRecord
@@ -41,6 +42,19 @@ class Lesson extends ActiveRecord
             'video_link' => 'Video URL',
             'created_at' => 'Created At',
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->created_at = date('Y-m-d H:i:s');
+        }
+        return parent::beforeSave($insert);
+    }
+
+    public function getFormattedCreatedAt()
+    {
+        return Yii::$app->formatter->asDate($this->created_at, 'php:d.m.Y');
     }
 
 }

@@ -38,6 +38,24 @@ class LessonController extends Controller
         ]);
     }
 
+    public function actionUpdate($id) {
+        $model = $this->findModel($id);
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionCreate()
+    {
+        $model = new Lesson();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
     protected function findModel($id)
     {
         if (($model = Lesson::findOne($id)) !== null) {

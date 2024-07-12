@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= Html::encode($lesson->title) ?></td>
                 <td><?= Html::encode($lesson->description) ?></td>
                 <td><?= Html::a(Html::encode($lesson->video_link), $lesson->video_link, ['target' => '_blank']) ?></td>
-                <td><?= Html::encode($lesson->created_at) ?></td>
+                <td><?= Html::encode($lesson->getFormattedCreatedAt()) ?></td>
                 <td class="actions-column">
                     <?= Html::a('<i class="fa fa-eye"></i>', ['view', 'id' => $lesson->id], ['class' => 'btn btn-info btn-sm']) ?>
                     <?= Html::a('<i class="fas fa-pencil-alt"></i>', ['update', 'id' => $lesson->id], ['class' => 'btn btn-primary btn-sm']) ?>
