@@ -40,4 +40,14 @@ class User extends ActiveRecord
         ];
     }
 
+    // Определение связи с другими моделями
+
+    // Метод getCompletedLessons() определяет связь один-ко-многим между моделью User и моделью CompletedLesson. Он
+    // использует метод hasMany() для указания, что один пользователь может иметь много записей о пройденных уроках.
+    // Связь устанавливается по полю user_id в таблице completed_lessons, которое ссылается на поле id в таблице users.
+    public function getCompletedLessons()
+    {
+        return $this->hasMany(CompletedLesson::class, ['user_id' => 'id']);
+    }
+
 }

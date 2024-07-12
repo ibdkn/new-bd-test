@@ -26,5 +26,36 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <h2 class="pt-5">Completed Lessons</h2>
+    <?php if(!empty($completedLessons)):?>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Video URL</th>
+                <th>Completed At</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($completedLessons as $completedLesson): ?>
+                <tr>
+                    <td><?= Html::encode($completedLesson->lesson->id) ?></td>
+                    <td><?= Html::encode($completedLesson->lesson->title) ?></td>
+                    <td><?= Html::encode($completedLesson->lesson->description) ?></td>
+                    <td><?= Html::a(Html::encode($completedLesson->lesson->video_link), $completedLesson->lesson->video_link, ['target' => '_blank']) ?></td>
+                    <td><?= Html::encode(Yii::$app->formatter->asDatetime($completedLesson->completed_at, 'php:d.m.Y H:i:s')) ?></td>
+                    <td class="action"><?= Html::a('<i class="fa fa-eye"></i>', ['lesson/view', 'id' => $completedLesson->lesson->id], ['class' => 'btn btn-info btn-sm']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p><?=Html::encode($model->first_name.' '.$model->last_name) ?> have not completed any lesson yet.</p>
+    <?php endif; ?>
+
 
 </div>

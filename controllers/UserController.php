@@ -47,10 +47,12 @@ class UserController extends Controller
     {
         // Получение модели по идентификатору ($id):
         $model = $this->findModel($id);
+        $completedLessons = $model->completedLessons;
 
         // Возвращает представление 'view' и передает в него найденную модель
         return $this->render('view', [
             'model' => $model,
+            'completedLessons' => $completedLessons,
         ]);
     }
 
