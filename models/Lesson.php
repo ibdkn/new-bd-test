@@ -1,0 +1,46 @@
+<?php
+
+namespace app\models;
+
+use yii\db\ActiveRecord;
+
+class Lesson extends ActiveRecord
+{
+    // Связываем модель с таблицей базы данных
+
+    // Метод tableName() возвращает имя таблицы, с которой связана данная модель. В данном случае это таблица lessons.
+    public static function tableName()
+    {
+        return 'lessons';
+    }
+
+    // Определяем правила валидации
+
+    // Метод rules() возвращает массив правил валидации для атрибутов модели:
+    public function rules()
+    {
+        return [
+            [['title', 'description', 'video_link', 'created_at'], 'required'],
+            [['description'], 'string'],
+            [['created_at'], 'safe'],
+            [['title'], 'string', 'max' => 255],
+            [['video_link'], 'string', 'max' => 512],
+        ];
+    }
+
+    // Определяем метки атрибутов
+
+    // Метод attributeLabels() возвращает массив меток атрибутов, которые будут использоваться в пользовательском
+    // интерфейсе. Эти метки помогают лучше описать поля для уроков.
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'video_link' => 'Video URL',
+            'created_at' => 'Created At',
+        ];
+    }
+
+}

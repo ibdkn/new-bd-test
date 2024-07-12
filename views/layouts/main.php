@@ -54,6 +54,7 @@ AppAsset::register($this);
                 . '</li>'
             ),
             ['label' => 'Users', 'url' => ['/site/users']],
+            ['label' => 'Lessons', 'url' => ['/site/lessons']],
         ],
     ]);
     NavBar::end();

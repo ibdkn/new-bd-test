@@ -52,6 +52,7 @@ $config = [
                 'site/user/create' => 'user/create',
                 'site/user/update/<id:\d+>' => 'user/update',
                 'site/user/delete/<id:\d+>' => 'user/delete',
+                'site/lessons' => 'lesson/index',
             ],
         ],
     ],
