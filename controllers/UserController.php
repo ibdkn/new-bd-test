@@ -104,6 +104,17 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionDelete($id)
+    {
+        // Метод findModel ищет модель User в базе данных по переданному идентификатору $id. Если модель не найдена,
+        // метод выбрасывает исключение NotFoundHttpException.
+        // После того как модель найдена, вызывается метод delete, который удаляет соответствующую запись из базы
+        $this->findModel($id)->delete();
+
+        // После удаления записи происходит перенаправление на страницу со списком записей
+        return $this->redirect(['index']);
+    }
+
     protected function findModel($id)
     {
         if (($model = User::findOne($id)) !== null) {
