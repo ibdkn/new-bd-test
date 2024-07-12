@@ -82,3 +82,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.actions-column {
+    max-width: 100px;
+}
