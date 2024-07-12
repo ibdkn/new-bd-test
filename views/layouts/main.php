@@ -9,6 +9,7 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -35,14 +36,18 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
+    $currentUrl = Yii::$app->request->url;
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Home', 'url' => ['/site/index'], 'active' => $currentUrl == Url::to(['/site/index'])],
+            ['label' => 'About', 'url' => ['/site/about'], 'active' => $currentUrl == Url::to(['/site/about'])],
+            ['label' => 'Contact', 'url' => ['/site/contact'], 'active' => $currentUrl == Url::to(['/site/contact'])],
+            ['label' => 'Users', 'url' => ['/user/index'], 'active' => $currentUrl == Url::to(['/user/index'])],
+            ['label' => 'Lessons', 'url' => ['/lesson/index'], 'active' => $currentUrl == Url::to(['/lesson/index'])],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+            ['label' => 'Login', 'url' => ['/site/login'], 'active' => $currentUrl == Url::to(['/site/login'])]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
@@ -53,8 +58,6 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             ),
-            ['label' => 'Users', 'url' => ['/site/users']],
-            ['label' => 'Lessons', 'url' => ['/site/lessons']],
         ],
     ]);
     NavBar::end();
