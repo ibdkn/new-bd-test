@@ -48,6 +48,10 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'site/users' => 'user/index',
+                'site/user/<id:\d+>' => 'user/view',
+                'site/user/create' => 'user/create',
+                'site/user/update/<id:\d+>' => 'user/update',
+                'site/user/delete/<id:\d+>' => 'user/delete',
             ],
         ],
     ],
@@ -67,7 +71,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
 
