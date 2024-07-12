@@ -29,12 +29,44 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'title',
             'description:ntext',
             'video_link',
-            'created_at',
+            [
+                'attribute' => 'created_at',
+                'format' => ['date', 'php:d.m.Y'],
+            ],
         ],
     ]) ?>
+
+    <h2 class="pt-5">Users who completed this lesson</h2>
+    <?php
+    if (!empty($completedLessons)):
+        ?>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Completed At</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($completedLessons as $index => $completedLesson): ?>
+                <tr>
+                    <td><?= $index + 1 ?></td>
+                    <td><?= Html::encode($completedLesson->user->first_name) ?></td>
+                    <td><?= Html::encode($completedLesson->user->last_name) ?></td>
+                    <td><?= Html::encode(Yii::$app->formatter->asDatetime($completedLesson->completed_at, 'php:d.m.Y H:i:s')) ?></td>
+                    <td class="action"><?= Html::a('<i class="fa fa-eye"></i>', ['user/view', 'id' => $completedLesson->user->id], ['class' => 'btn btn-info btn-sm']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>No users have completed this lesson yet.</p>
+    <?php endif; ?>
 
 </div>

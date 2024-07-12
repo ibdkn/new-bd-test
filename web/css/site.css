@@ -88,3 +88,9 @@ a.desc:after {
     width: 130px;
     min-width: 130px;
 }
+
+.action {
+    max-width: 50px;
+    width: 50px;
+    text-align: center;
+}

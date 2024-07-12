@@ -57,4 +57,9 @@ class Lesson extends ActiveRecord
         return Yii::$app->formatter->asDate($this->created_at, 'php:d.m.Y');
     }
 
+    public function getCompletedLessons()
+    {
+        return $this->hasMany(CompletedLesson::class, ['lesson_id' => 'id']);
+    }
+
 }
