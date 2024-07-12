@@ -4,13 +4,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $lessons app\models\User[] */
 
-$this->title = 'Users';
+$this->title = 'Lessons';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= Html::a('<i class="fa fa-plus"></i> Added new lesson', ['create'], ['class' => 'btn btn-success mb-3']) ?>
+    <?= Html::a('<i class="fa fa-plus"></i> Create new lesson', ['create'], ['class' => 'btn btn-success mb-3']) ?>
 
     <table class="table table-striped table-bordered">
         <thead>

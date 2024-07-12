@@ -84,5 +84,7 @@ a.desc:after {
 }
 
 .actions-column {
-    max-width: 100px;
+    max-width: 130px;
+    width: 130px;
+    min-width: 130px;
 }

@@ -46,6 +46,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
                 'site/users' => 'user/index',
                 'site/user/<id:\d+>' => 'user/view',
@@ -53,6 +54,10 @@ $config = [
                 'site/user/update/<id:\d+>' => 'user/update',
                 'site/user/delete/<id:\d+>' => 'user/delete',
                 'site/lessons' => 'lesson/index',
+                'site/lesson/<id:\d+>' => 'lesson/view',
+                'site/lesson/create' => 'lesson/create',
+                'site/lesson/update/<id:\d+>' => 'lesson/update',
+                'site/lesson/delete/<id:\d+>' => 'lesson/delete',
             ],
         ],
     ],
