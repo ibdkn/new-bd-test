@@ -10,6 +10,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <?= Html::a('<i class="fa fa-plus"></i> Create User', ['create'], ['class' => 'btn btn-success mb-3']) ?>
+
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
