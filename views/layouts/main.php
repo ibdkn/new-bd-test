@@ -41,11 +41,9 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index'], 'active' => $currentUrl == Url::to(['/site/index'])],
-            ['label' => 'About', 'url' => ['/site/about'], 'active' => $currentUrl == Url::to(['/site/about'])],
-            ['label' => 'Contact', 'url' => ['/site/contact'], 'active' => $currentUrl == Url::to(['/site/contact'])],
-            ['label' => 'Users', 'url' => ['/user/index'], 'active' => Yii::$app->controller->id == 'user'],
-            ['label' => 'Lessons', 'url' => ['/lesson/index'], 'active' => Yii::$app->controller->id == 'lesson'],
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login'], 'active' => $currentUrl == Url::to(['/site/login'])]
             ) : (
@@ -58,6 +56,8 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             ),
+            ['label' => 'Users', 'url' => ['/user/index']],
+            ['label' => 'Lessons', 'url' => ['/lesson/index']],
         ],
     ]);
     NavBar::end();
