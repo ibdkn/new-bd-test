@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Video URL</th>
@@ -41,9 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($completedLessons as $completedLesson): ?>
+            <?php foreach ($completedLessons as $index => $completedLesson): ?>
                 <tr>
-                    <td><?= Html::encode($completedLesson->lesson->id) ?></td>
+                    <td><?= $index + 1 ?></td>
                     <td><?= Html::encode($completedLesson->lesson->title) ?></td>
                     <td><?= Html::encode($completedLesson->lesson->description) ?></td>
                     <td><?= Html::a(Html::encode($completedLesson->lesson->video_link), $completedLesson->lesson->video_link, ['target' => '_blank']) ?></td>
